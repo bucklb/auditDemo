@@ -2,6 +2,7 @@ package me.bucklb.auditDemo.Audit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import me.bucklb.auditDemo.Domain.Author;
+import me.bucklb.auditDemo.Domain.AuthorPlus;
 import me.bucklb.auditDemo.Domain.Quote;
 
 import java.util.List;
@@ -49,6 +50,13 @@ public class AuditTestTools {
         return jSonify(hack);
     }
 
+    // A basic json string of an author and some quotes.  With added genre
+    public static String jsonAuthorPlus(String name, String genre, List<Quote> quotes) {
+        String s="";
+
+        AuthorPlus hack = new AuthorPlus(name, genre, quotes);
+        return jSonify(hack);
+    }
 
 
 

@@ -36,7 +36,9 @@ public class CarfDetailProviderTest {
 
         System.out.println(cdp.getCarfDetailValue("$.name"));
         System.out.println(cdp.getCarfDetailValue("$.quotes[0].type"));
-        System.out.println(cdp.getCarfDetailValue("$.quotes[1].type"));
+
+        // If we ask for a non-existent field then expect a no
+        System.out.println(cdp.getCarfDetailValue("$.genre"));
 
     }
 
@@ -88,6 +90,42 @@ public class CarfDetailProviderTest {
         } else {
             System.out.println("nada!");
         }
+
+    }
+
+    @Test
+    public void testDoubleProviderAuthorMix() {
+
+        List<Quote> b4quotes = new ArrayList<>();
+        b4quotes.add(new Quote("1","a"));
+        String jsonB4 = AuditTestTools.jsonAuthor("random", b4quotes);
+
+        List<Quote> afquotes = new ArrayList<>();
+        afquotes.add(new Quote("2","b"));
+        String jsonAF = AuditTestTools.jsonAuthorPlus("known", "romantic fiction", afquotes);
+
+        // Feed the two author$ to provider
+        CarfDetailProvider cdp = new CarfDetailProviderImpl(jsonB4, jsonAF);
+
+        String[] vals=null;
+
+        // Only one of the strings will contain a "genre" entry
+        vals = cdp.getCarfDetailValues("$.genre");
+        // Allow us to see if implemented yet
+        if(vals!=null && vals.length>0) {
+            if(vals.length>1){
+                System.out.println(vals[0] + " " + vals[1]);
+            } else {
+                System.out.println(vals[0]);
+            }
+        } else {
+            System.out.println("nada!");
+        }
+
+        // Neither string contains this, so ought to be advised of that
+        vals = cdp.getCarfDetailValues("$.nonSuch");
+
+
 
     }
 

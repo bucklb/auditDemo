@@ -9,8 +9,6 @@ import me.bucklb.auditDemo.Domain.CarfAction;
  */
 public class CarfDetailProviderImpl implements CarfDetailProvider {
     String[] json;
-//    String jsonB4;
-//    String jsonAF;
 
     // One string. Probably a bad thing if we're asked for a pair of values ...
     public CarfDetailProviderImpl(String json){
@@ -21,14 +19,8 @@ public class CarfDetailProviderImpl implements CarfDetailProvider {
     // One string. Probably a bad thing if we're asked for a pair of values ...
     public CarfDetailProviderImpl(String jsonB4, String jsonAF){
         super();
-        this.json = new String[]{jsonB4,jsonAF};
-//        this.jsonB4 = jsonB4;
-//        this.jsonAF = jsonAF;
+        this.json = new String[]{jsonB4, jsonAF};
     }
-
-
-
-
 
     // Given json in a string and a path, get the value
     private String getCarfDetailValue(String jsonData, String dataPath)  {
@@ -42,14 +34,8 @@ public class CarfDetailProviderImpl implements CarfDetailProvider {
         // TODO - if we were given no jSon do we throw an exception?
         String val=null;
 
-        // PathNotFound is something we should be expecting to encounter (and therefore be able to deal with)
-        try {
-//            val=getCarfDetailValue(json, dataPath);
-            val=getCarfDetailValue(json[0], dataPath);
-        } catch (PathNotFoundException e) {
-            // TODO - turn this in to an exception of ours and kick it upstairs!!
-            e.printStackTrace();
-        }
+        // If the parser throws an exception, caller gets to worry about it
+        val=getCarfDetailValue(json[0], dataPath);
 
         return val;
     }
@@ -58,12 +44,28 @@ public class CarfDetailProviderImpl implements CarfDetailProvider {
     @Override
     public String[] getCarfDetailValues(String dataPath) {
         String[] val=null;
+        String b4 = null;
+        String af = null;
+        boolean b4Failed = false;
 
-        // Grab some values
-        String b4 = getCarfDetailValue(json[0], dataPath);
-        String af = getCarfDetailValue(json[1], dataPath);
+        // Grab some values.  Only raise/allow a not-found exception if not in EITHER setup
+        try {
+            b4 = getCarfDetailValue(json[0], dataPath);
+        } catch (PathNotFoundException e) {
+            // record the fact it happened.  Only really a problem if it happens with both (and even then ....)
+            b4Failed = true;
+        }
 
-        // For now, return as a pair, even if identical (or identically empty)
+        try {
+            af = getCarfDetailValue(json[1], dataPath);
+        } catch (PathNotFoundException e) {
+            if (b4Failed) {
+                // Not in either, so probably ought to let caller choose what to do.  May depend if mandatory ??
+                throw e;
+            }
+        }
+
+        // For now, return as a pair, even if identical (or identically empty).  Null values are an option
         val=new String[]{b4,af};
 
         return val;

@@ -43,11 +43,20 @@ public class CarfDetailsServiceTest {
         // Create provider and use (with action) to create the service
         CarfDetailProvider cdp = new CarfDetailProviderImpl(json);
         CarfDetailService cds = new CarfDetailServiceImpl(cdp, CarfAction.READ);
-        ManifestItem mi = new ManifestItem("y","$.type");
 
+        ManifestItem mi = new ManifestItem("y","$.type");
         CarfEventDetail ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
+        // genre is not mandatory, so a null response is expected
+        mi= new ManifestItem("y","$.genre");
+        ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
+
+        // make genre is not mandatory, so an exception
+        mi.setMandatory(true);
+        ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
 
     }
 
@@ -67,12 +76,47 @@ public class CarfDetailsServiceTest {
         CarfDetailProvider cdp = new CarfDetailProviderImpl(jsonB4, jsonAF);
 
         CarfDetailService cds = new CarfDetailServiceImpl(cdp);
-        ManifestItem mi = new ManifestItem("x","$.quotes[0].type");
+        ManifestItem mi = new ManifestItem("x","$.quotes[0].typed");
 
         CarfEventDetail ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
     }
 
+    // Give the service a provider equipped with b4 AND af
+    @Test
+    public void testServiceAuthorsPlus() {
+
+        List<Quote> b4quotes = new ArrayList<>();
+        b4quotes.add(new Quote("1","a"));
+        String jsonB4 = AuditTestTools.jsonAuthor("random", b4quotes);
+
+        List<Quote> afquotes = new ArrayList<>();
+        afquotes.add(new Quote("2","b"));
+        String jsonAF = AuditTestTools.jsonAuthorPlus("known", "sci-fi",afquotes);
+
+        // Feed the two author$ to provider
+        CarfDetailProvider cdp = new CarfDetailProviderImpl(jsonB4, jsonAF);
+
+        // Should not matter if field is only in one place
+        CarfDetailService cds = new CarfDetailServiceImpl(cdp);
+        ManifestItem mi = new ManifestItem("x","$.genre");
+
+        CarfEventDetail ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
+
+        // Non-existent field needn't be a problem
+        mi = new ManifestItem("Pseudonym","$.NomDePlume");
+        ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
+
+        // Non-existent field needn't be a problem. unless we want it to be
+        mi.setMandatory(true);
+        ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
+
+
+
+    }
 
 }
