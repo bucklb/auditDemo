@@ -103,6 +103,7 @@ public class CarfEventDetail {
                     this.b4=val;
                     break;
                 case READ:
+                case RF:
                     this.rf=val;
                     break;
                 default:

@@ -4,9 +4,10 @@ package me.bucklb.auditDemo.Domain;
 public enum CarfAction {
     CREATE,
     READ,
-    UPDATE,
+//    UPDATE,
     DELETE,
 
     B4,
-    AF
+    AF,
+    RF
 }

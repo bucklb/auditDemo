@@ -46,9 +46,9 @@ public class ManifestItemTest {
         mi=new ManifestItem("test","", CarfAction.DELETE);
         System.out.println(mi.asCarfEventDetail(null).toString());
 
-        // If we pass two strings, want them treated as B4 and AF
-        mi=new ManifestItem("test","", CarfAction.UPDATE);
-        System.out.println(mi.asCarfEventDetail(null, "").toString());
+//        // If we pass two strings, want them treated as B4 and AF
+//        mi=new ManifestItem("test","", CarfAction.UPDATE);
+//        System.out.println(mi.asCarfEventDetail(null, "").toString());
 
     }
 
@@ -62,9 +62,9 @@ public class ManifestItemTest {
         mi = new ManifestItem("test","$.type",CarfAction.CREATE);
         System.out.println(mi.asCarfEventDetail(json).toString());
 
-        ManifestItem mj = null;
-        mi = new ManifestItem("test","$.type",CarfAction.UPDATE);
-        System.out.println(mi.asCarfEventDetail(json,kson).toString());
+//        ManifestItem mj = null;
+//        mi = new ManifestItem("test","$.type",CarfAction.UPDATE);
+//        System.out.println(mi.asCarfEventDetail(json,kson).toString());
 
 
 
