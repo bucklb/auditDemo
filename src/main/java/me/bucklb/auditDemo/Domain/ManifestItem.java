@@ -29,6 +29,11 @@ public class ManifestItem {
         return val;
     }
 
+    // Moving the knowledge about the action in to CarfDetailService
+    public ManifestItem(String carfName, String dataPath) {
+        this.carfName = carfName;
+        this.dataPath = dataPath;
+    }
 
     // Needn't be a format or mandatory.
     public ManifestItem(String carfName, String dataPath, CarfAction action) {

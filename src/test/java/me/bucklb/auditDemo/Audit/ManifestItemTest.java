@@ -1,30 +1,33 @@
-package me.bucklb.auditDemo.Domain;
+package me.bucklb.auditDemo.Audit;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import me.bucklb.auditDemo.Domain.CarfAction;
+import me.bucklb.auditDemo.Domain.ManifestItem;
+import me.bucklb.auditDemo.Domain.Quote;
 import org.junit.Test;
 
 public class ManifestItemTest {
 
-    // A basic json string
-    private String jsonQuote(String type, String value) {
-
-        String s="";
-
-        // Start with Jackson, but might move on to gSon?
-        ObjectMapper objectMapper = new ObjectMapper();
-
-        Quote quote = new Quote(type,value);
-
-        // Just want something for now. Turn "proper" object to string
-        try {
-            s = objectMapper.writeValueAsString(quote);
-        } catch (Exception e) {
-            // Enough for now
-            e.printStackTrace();
-        }
-
-        return s;
-    }
+//    // A basic json string
+//    private String jsonQuote(String type, String value) {
+//
+//        String s="";
+//
+//        // Start with Jackson, but might move on to gSon?
+//        ObjectMapper objectMapper = new ObjectMapper();
+//
+//        Quote quote = new Quote(type,value);
+//
+//        // Just want something for now. Turn "proper" object to string
+//        try {
+//            s = objectMapper.writeValueAsString(quote);
+//        } catch (Exception e) {
+//            // Enough for now
+//            e.printStackTrace();
+//        }
+//
+//        return s;
+//    }
 
 
 
@@ -52,8 +55,8 @@ public class ManifestItemTest {
     // Grab the data?
     @Test
     public void manifestTestToo() {
-        String json=jsonQuote("firstType","firstValue");
-        String kson=jsonQuote("secondType","firstValue");
+        String json = AuditTestTools.jsonQuote("firstType","firstValue");
+        String kson = AuditTestTools.jsonQuote("secondType","firstValue");
 
         ManifestItem mi = null;
         mi = new ManifestItem("test","$.type",CarfAction.CREATE);
