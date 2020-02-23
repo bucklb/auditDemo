@@ -3,6 +3,7 @@ package me.bucklb.auditDemo.service;
 import com.jayway.jsonpath.JsonPath;
 import com.jayway.jsonpath.PathNotFoundException;
 import me.bucklb.auditDemo.Domain.CarfAction;
+import me.bucklb.auditDemo.Exception.NoSuchPathException;
 
 /*
     Start with simple case where we use jsonPath to interrogate json string(s)
@@ -35,7 +36,12 @@ public class CarfDetailProviderImpl implements CarfDetailProvider {
         String val=null;
 
         // If the parser throws an exception, caller gets to worry about it
-        val=getCarfDetailValue(json[0], dataPath);
+        try {
+            val=getCarfDetailValue(json[0], dataPath);
+        } catch (PathNotFoundException e) {
+            // Wrap it in non jsonPath specific exception
+            throw new NoSuchPathException(e);
+        }
 
         return val;
     }
@@ -60,8 +66,9 @@ public class CarfDetailProviderImpl implements CarfDetailProvider {
             af = getCarfDetailValue(json[1], dataPath);
         } catch (PathNotFoundException e) {
             if (b4Failed) {
-                // Not in either, so probably ought to let caller choose what to do.  May depend if mandatory ??
-                throw e;
+                // Not in either, so probably ought to let caller choose what to do.
+                // Wrap in our exception, so caller need not know it cam from jSonPath
+                throw new NoSuchPathException(e);
             }
         }
 

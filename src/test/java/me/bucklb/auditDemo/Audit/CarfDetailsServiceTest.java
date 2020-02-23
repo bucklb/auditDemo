@@ -1,15 +1,18 @@
 package me.bucklb.auditDemo.Audit;
 
+import com.jayway.jsonpath.PathNotFoundException;
 import me.bucklb.auditDemo.Domain.CarfAction;
 import me.bucklb.auditDemo.Domain.CarfEventDetail;
 import me.bucklb.auditDemo.Domain.ManifestItem;
 import me.bucklb.auditDemo.Domain.Quote;
+import me.bucklb.auditDemo.Exception.NoSuchPathException;
 import me.bucklb.auditDemo.service.CarfDetailProvider;
 import me.bucklb.auditDemo.service.CarfDetailProviderImpl;
 import me.bucklb.auditDemo.service.CarfDetailService;
 import me.bucklb.auditDemo.service.CarfDetailServiceImpl;
 import org.junit.Test;
 
+import javax.swing.plaf.nimbus.NimbusLookAndFeel;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,19 +47,26 @@ public class CarfDetailsServiceTest {
         CarfDetailProvider cdp = new CarfDetailProviderImpl(json);
         CarfDetailService cds = new CarfDetailServiceImpl(cdp, CarfAction.READ);
 
+        System.out.println("expect to find a type");
         ManifestItem mi = new ManifestItem("y","$.type");
         CarfEventDetail ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
         // genre is not mandatory, so a null response is expected
+        System.out.println("genre is not mandatory, but only ser");
         mi= new ManifestItem("y","$.genre");
         ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
-        // make genre is not mandatory, so an exception
+        // make genre mandatory, so an exception
+        System.out.println("genre is now mandatory, so expect exception");
         mi.setMandatory(true);
-        ced = cds.getCarfEventDetail(mi);
-        System.out.println(ced.toString());
+        try {
+            ced = cds.getCarfEventDetail(mi);
+            System.out.println(ced.toString());
+        } catch (NoSuchPathException e) {
+            System.out.println("NoSuchPathException, msg = " + e.getLocalizedMessage());
+        }
 
     }
 
@@ -75,11 +85,22 @@ public class CarfDetailsServiceTest {
         // Feed the two author$ to provider
         CarfDetailProvider cdp = new CarfDetailProviderImpl(jsonB4, jsonAF);
 
+
         CarfDetailService cds = new CarfDetailServiceImpl(cdp);
         ManifestItem mi = new ManifestItem("x","$.quotes[0].typed");
 
+        System.out.println("Expect typed not to be found but not to care");
         CarfEventDetail ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
+
+        System.out.println("Expect typed not to be found but to care now it's mandatory");
+        mi.setMandatory(true);
+        try {
+            ced = cds.getCarfEventDetail(mi);
+            System.out.println(ced.toString());
+        } catch (NoSuchPathException e) {
+            System.out.println("NoSuchPathException, msg = " + e.getLocalizedMessage());
+        }
 
     }
 
@@ -102,18 +123,34 @@ public class CarfDetailsServiceTest {
         CarfDetailService cds = new CarfDetailServiceImpl(cdp);
         ManifestItem mi = new ManifestItem("x","$.genre");
 
+
+
+
+        System.out.println("Expect the genre to be in one string only");
         CarfEventDetail ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
+        System.out.println("Expect the genre to be in one string only and MANDATORY not to matter");
+        mi.setMandatory(true);
+        ced = cds.getCarfEventDetail(mi);
+        System.out.println(ced.toString());
+
+
         // Non-existent field needn't be a problem
+        System.out.println("No Such Path but no exception, expected");
         mi = new ManifestItem("Pseudonym","$.NomDePlume");
         ced = cds.getCarfEventDetail(mi);
         System.out.println(ced.toString());
 
         // Non-existent field needn't be a problem. unless we want it to be
+        System.out.println("No Such Path but now an exception is expected");
         mi.setMandatory(true);
-        ced = cds.getCarfEventDetail(mi);
-        System.out.println(ced.toString());
+        try {
+            ced = cds.getCarfEventDetail(mi);
+            System.out.println(ced.toString());
+        } catch (NoSuchPathException e) {
+            System.out.println("NoSuchPathException, msg = " + e.getLocalizedMessage());
+        }
 
 
 

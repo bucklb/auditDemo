@@ -5,6 +5,7 @@ import com.jayway.jsonpath.PathNotFoundException;
 import me.bucklb.auditDemo.Domain.CarfAction;
 import me.bucklb.auditDemo.Domain.CarfEventDetail;
 import me.bucklb.auditDemo.Domain.ManifestItem;
+import me.bucklb.auditDemo.Exception.NoSuchPathException;
 
 /*
     Want something that we can use to get our details to present to ATAS
@@ -47,7 +48,8 @@ public class CarfDetailServiceImpl implements CarfDetailService {
 
             try {
                 deet = carfDetailProvider.getCarfDetailValue(manifestItem.getDataPath());
-            } catch (PathNotFoundException e) {
+ //           } catch (PathNotFoundException e) {
+            } catch (NoSuchPathException e) {
                 // If we really needed a value to be present, then just kick it on.  If not mandatory, then meh!
                 if(manifestItem.isMandatory()){
                     throw e;
@@ -65,7 +67,8 @@ public class CarfDetailServiceImpl implements CarfDetailService {
                 // Create the details, assuming we found them
                 deets = carfDetailProvider.getCarfDetailValues(manifestItem.getDataPath());
 
-            } catch (PathNotFoundException e) {
+//            } catch (PathNotFoundException e) {
+            } catch (NoSuchPathException e) {
                 // If we really needed a value to be present in both, then just kick it on.  If not mandatory, then meh!
                 if(manifestItem.isMandatory()){
                     throw e;
@@ -73,6 +76,9 @@ public class CarfDetailServiceImpl implements CarfDetailService {
             }
 
             // Will need to look at format type steps now we have some confidence in our values
+
+            // TODO - if the before and after values match we may not want to record it.
+            // Do we decide that here or do we leave caller to make that decision (or is it flagged in manifestItem somehow?)
 
             ced = new CarfEventDetail.CarfEventDetailBuilder(manifestItem.getCarfName())
                     .setValue(deets[0],CarfAction.B4).setValue(deets[1],CarfAction.AF).build();
