@@ -16,8 +16,10 @@ public class CarfDetailServiceImpl implements CarfDetailService {
     CarfDetailProvider carfDetailProvider;
     CarfAction action;
 
-
-    // Right.  The service really needn't know about how the data is provided, beyond getting a "provider"
+    // User may need to know the action
+    public CarfAction getAction() {
+        return action;
+    }
 
     // If we are going to do b4 & af then theaction is implicit and need not be stated explicitly?
     public CarfDetailServiceImpl(CarfDetailProvider carfDetailProvider){
