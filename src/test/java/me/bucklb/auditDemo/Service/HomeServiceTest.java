@@ -16,4 +16,11 @@ public class HomeServiceTest {
 
     }
 
+    @Test
+    public void env(){
+        System.out.println( System.getProperty("environment") );
+    }
+
+
+
 }

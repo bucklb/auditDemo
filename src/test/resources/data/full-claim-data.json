@@ -1,0 +1,403 @@
+{
+  "allowance-benefits": {
+    "benefits": "AA"
+  },
+  "allowance-eligibility": {
+    "hoursCaring": "Yes",
+    "over16": "Yes",
+    "countryName": "englandScotlandWales"
+  },
+  "allowance-approve": {
+    "dummy": "dummy"
+  },
+  "disclaimer": {
+    "dummy": "dummy"
+  },
+  "third-party": {
+    "areYouTheCarer": "No",
+    "thirdPartyName": "Bill Jones, we-help-carers.org"
+  },
+  "claim-date": {
+    "carerClaimStart": {
+      "dd": 12,
+      "mm": 12,
+      "yyyy": 2017
+    },
+    "beforeClaimStart": "Yes",
+    "backDatedCarerClaimStart": {
+      "dd": 12,
+      "mm": 7,
+      "yyyy": 2017
+    }
+  },
+  "about-you-your-details": {
+    "carerTitle": "Mr",
+    "carerFirstName": "Allan",
+    "carerMiddleName": "Peter",
+    "carerLastName": "Jones",
+    "carerNationalInsuranceNumber": "BC123456D",
+    "carerDateOfBirth": {
+      "dd": 21,
+      "mm": 12,
+      "yyyy": 1960
+    }
+  },
+  "about-you-marital-status": {
+    "maritalStatus": "married"
+  },
+  "about-you-contact-details": {
+    "addressDetails": {
+      "address1": "1 Manor Park",
+      "address2": "Burnley",
+      "address3": "",
+      "postcode": "BL1 1AB"
+    },
+    "contactNumber": "01234123123",
+    "emailConfirmationWanted": "Yes",
+    "emailAddress": "cau.casa@dwp.gsi.gov.uk",
+    "confirmEmailAddress": "cau.casa@dwp.gsi.gov.uk"
+  },
+  "nationality-where-you-live": {
+    "nationality": "AnotherNationality",
+    "actualNationality": "Polish",
+    "alwaysLivedIn": "No",
+    "liveInNow": "Yes",
+    "arrivedIn": "LessThan3YearsAgo",
+    "dateArrived": {
+      "dd": 11,
+      "mm": 10,
+      "yyyy": 2016
+    },
+    "otherCountry": "Poland",
+    "beenAwayFrom": "Yes",
+    "whereYouHaveBeen": "Germany"
+  },
+  "nationality-payments-from-abroad": {
+    "payFromAbroad": "Yes",
+    "pensionsFromAbroad": "Yes",
+    "paymentDetails": "€90 a month from a former employer in Poland",
+    "NIAbroad": "Yes",
+    "NIDetails": "€10 a month in Poland"
+  },
+  "your-partner-personal-details": {
+    "hadPartnerSinceClaimDate": "Yes",
+    "partnerTitle": "Ms",
+    "partnerFirstName": "Angela",
+    "partnerMiddleName": "Anne",
+    "partnerLastName": "Jones",
+    "partnerOtherName": "None",
+    "partnerNationalInsuranceNumber": "NR345345A",
+    "partnerDateOfBirth": {
+      "dd": 2,
+      "mm": 10,
+      "yyyy": 1961
+    },
+    "partnerNationality": "German",
+    "haveSeparatedSinceClaimDate": "No",
+    "isPersonYouProvideCareFor": "No"
+  },
+  "care-you-provide-their-personal-details": {
+    "careeTitle": "Professor",
+    "careeFirstName": "Albus",
+    "careeMiddleName": "Algernon",
+    "careeLastName": "Dumbledore",
+    "carerCNationalInsuranceNumbr": "NX123123A",
+    "careeDateOfBirth": {
+      "dd": 12,
+      "mm": 11,
+      "yyyy": 1945
+    },
+    "careeRelationship": "Friend",
+    "liveAtSameAddress": "No",
+    "careeAddressDetails": {
+      "address1": "12 Smithy Close",
+      "address2": "Burnley",
+      "address3": "",
+      "postcode": "BL1 2AX"
+    },
+    "isPartnerDP": "No"
+  },
+  "care-you-provide-more-about-the-care": {
+    "spend35HoursCaring": "Yes",
+    "otherCarerSpend35HoursCaring": "Yes",
+    "getUCCarerElement": "Yes",
+    "otherCarerDetails": "Some optional information"
+  },
+  "breaks": [
+    {
+      "breakType": "Hospital",
+      "whoWasInHospital": "You",
+      "carerAdmittedDate": {
+        "dd": "10",
+        "mm": "10",
+        "yyyy": "2015"
+      },
+      "hospitalStayEnded": "Yes",
+      "carerDischargeDate": {
+        "dd": "31",
+        "mm": "12",
+        "yyyy": "2015"
+      },
+      "careeAdmittedDate": {
+        "dd": "",
+        "mm": "",
+        "yyyy": ""
+      },
+      "careeDischargeDate": {
+        "dd": "",
+        "mm": "",
+        "yyyy": ""
+      }
+    },
+    {
+      "breakType": "Respite",
+      "whoWasInRespite": "You",
+      "respiteCareeAdmittedDate": {
+        "dd": "",
+        "mm": "",
+        "yyyy": ""
+      },
+      "respiteCarerAdmittedDate": {
+        "dd": "10",
+        "mm": "11",
+        "yyyy": "2000"
+      },
+      "respiteCarerStayEnded": "No",
+      "respiteCarerMedicalAssistance": "No"
+    },
+    {
+      "breakType": "Other",
+      "dateStoppedCaring": {
+        "dd": "20",
+        "mm": "12",
+        "yyyy": "2016"
+      },
+      "providingCareAgain": "No"
+    }
+  ],
+  "breaks-summary": {
+    "breaksSinceCareStarted": [
+      "None"
+    ],
+    "otherCareNotProvided": "No"
+  },
+  "education": {
+    "beenInEducationSinceClaimDate": "Yes",
+    "isOpenUniversityCourse": "No"
+  },
+  "education-course-details": {
+    "courseTitle": "Dragon taming",
+    "whereAreYouStudying": "Hogwarts",
+    "mainTeacherOrTutor": "Rubeus Hagrid",
+    "contactNumber": "01772123123",
+    "courseStartDate": {
+      "dd": 9,
+      "mm": 9,
+      "yyyy": 2015
+    },
+    "courseEndDate": {
+      "dd": 20,
+      "mm": 7,
+      "yyyy": 2018
+    },
+    "isUniversityCourse": "No"
+  },
+  "education-non-university-course": {
+    "involve21HoursOrMore": "Yes",
+    "isApprovedBreak": "No"
+  },
+  "your-income": {
+    "employeeSince": "Yes",
+    "selfEmployedSince": "Yes",
+    "otherIncomeSince": [
+      "StatutorySickPay",
+      "PaternityMaternityOrAdoption",
+      "FosteringAllowance",
+      "DirectPayment",
+      "RentalIncome",
+      "OtherIncome"
+    ]
+  },
+  "employments": [
+    {
+      "employment-details": {
+        "employerName": "Asda",
+        "contactNumber": "0161123123",
+        "addressDetails": {
+          "address1": "Fulwood",
+          "address2": "Preston",
+          "address3": "",
+          "postcode": "PR2 1AA"
+        },
+        "jobStartedBefore": "Yes",
+        "finishedThisJob": "No"
+      },
+      "employment-lastwage": {
+        "howOftenAreYouPaidPresent": "weekly",
+        "whenDoYouGetPaidPresent": "Last thursday in the month",
+        "whenWereYouLastPaid": {
+          "dd": 28,
+          "mm": 3,
+          "yyyy": "2018"
+        },
+        "amountPaid": "201.20",
+        "whatWasIncluded": "nothing",
+        "sameAmountPresent": "No"
+      },
+      "employment-expenses": {
+        "payIntoAPensionPresent": "Yes",
+        "pensionDetailsPresent": "Pay 10 per week into company pension",
+        "payForThingsPresent": "Yes",
+        "thingsDetailsPresent": "Not very often but sometimes like overalls.",
+        "careCostsPresent": "Yes",
+        "careCostsDetailsPresent": "Nursery 2 days per week like I mentioned before. Sometimes grandma looks after.",
+        "formerJob": "No"
+      }
+    },
+    {
+      "employment-details": {
+        "employerName": "Tesco",
+        "contactNumber": "0171234234",
+        "addressDetails": {
+          "address1": "Ribbleton",
+          "address2": "Preston",
+          "address3": "",
+          "postcode": "PR3 2AB"
+        },
+        "jobStartedBefore": "Yes",
+        "finishedThisJob": "No"
+      },
+      "employment-lastwage": {
+        "howOftenAreYouPaidPresent": "weekly",
+        "whenDoYouGetPaidPresent": "Every week",
+        "whenWereYouLastPaid": {
+          "dd": 28,
+          "mm": 3,
+          "yyyy": "2018"
+        },
+        "amountPaid": "210.20",
+        "whatWasIncluded": "everything",
+        "sameAmountPresent": "Yes"
+      },
+      "employment-expenses": {
+        "payIntoAPensionPresent": "Yes",
+        "pensionDetailsPresent": "Pay 35.50 each month",
+        "payForThingsPresent": "No",
+        "careCostsPresent": "Yes",
+        "careCostsDetailsPresent": "Pay friend to look after 2 year old son"
+      }
+    }
+  ],
+  "employment-summary": {
+    "anyOtherJobs": "No"
+  },
+  "self-employment-dates": {
+    "typeOfBusiness": "Plumber",
+    "stillSelfEmployed": "Yes",
+    "dateStartedWork": {
+      "dd": 10,
+      "mm": 2,
+      "yyyy": "2018"
+    },
+    "dateFinishedWork": {
+      "dd": 10,
+      "mm": 2,
+      "yyyy": "2018"
+    },
+    "moreThanYearAgo": "Yes",
+    "haveAccounts": "No",
+    "knowTradingYear": "Yes",
+    "tradingYearDate": {
+      "dd": 1,
+      "mm": 1,
+      "yyyy": "2016"
+    }
+  },
+  "self-employment-expenses": {
+    "payIntoPensionPresent": "Yes",
+    "pensionDetailsPresent": "SIP 50 per month",
+    "haveCareCostsPresent": "Yes",
+    "careCostsDetailsPresent": "Nursery 40 per day 2 days per week."
+  },
+  "employment-additional-info": {
+    "doYouWantToAddAnything": "Yes",
+    "additionalEmploymentInfo": "Nothing to add"
+  },
+  "your-income-statutory-sick-pay": {
+    "stillBeingPaid": "No",
+    "dateLastPaid": {
+      "dd": 10,
+      "mm": 3,
+      "yyyy": "2018"
+    },
+    "paymentFrequency": "varies",
+    "howOften": "Alternate weeks",
+    "amountPaid": "25.89",
+    "whoPaid": "Primrose Rest Home"
+  },
+  "your-income-statutory-pay": {
+    "whichAreYouPaid": "maternityOrPaternity",
+    "stillBeingPaid": "No",
+    "dateLastPaid": {
+      "dd": 10,
+      "mm": 2,
+      "yyyy": "2018"
+    },
+    "paymentFrequency": "varies",
+    "howOften": "Bi-monthly",
+    "amountPaid": "10.90",
+    "whoPaid": "SPMA Company"
+  },
+  "your-income-fostering-allowance": {
+    "typeOfOrganisation": "other",
+    "whoPaid": "Creswell Solicitors",
+    "stillBeingPaid": "No",
+    "dateLastPaid": {
+      "dd": 5,
+      "mm": 12,
+      "yyyy": "2017"
+    },
+    "paymentFrequency": "varies",
+    "howOften": "Quarterly",
+    "amountPaid": "140.89",
+    "whoPaidYou": "Creswell Solicitors"
+  },
+  "your-income-direct-payment": {
+    "stillBeingPaid": "No",
+    "dateLastPaid": {
+      "dd": 29,
+      "mm": 3,
+      "yyyy": "2018"
+    },
+    "paymentFrequency": "varies",
+    "howOften": "Twice weekly",
+    "amountPaid": "9.57",
+    "whoPaid": "Mr W Smithers"
+  },
+  "your-income-rental-income": {
+    "rentalIncomeDetails": "Paid 300 monthly for renting out a flat"
+  },
+  "your-income-other-income": {
+    "otherIncomeDetails": "Occasional income from various companies I run. Appromixmately £20 per week."
+  },
+  "pay-details": {
+    "haveBankAccount": "Yes",
+    "accountHolderName": "A C Holder",
+    "bankName": "Lloyds",
+    "sortCode": {
+      "sort1": "01",
+      "sort2": "02",
+      "sort3": "03"
+    },
+    "accountNumber": "09876543",
+    "howOftenPaid": "Every4Weeks"
+  },
+  "information-additional-information": {
+    "additionalInformation": "Yes",
+    "tellUs": "I have lots of additional information to type into the text area provided.",
+    "futureCommunicationsInWelsh": "No"
+  },
+  "declaration": {
+    "contact": "Yes"
+  }
+}
